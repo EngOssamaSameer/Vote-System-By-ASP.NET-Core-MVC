@@ -1,0 +1,73 @@
+﻿@model List<Vote>
+
+<nav class="bottom-navbar">
+    <div class="container">
+        <ul class="nav page-navigation">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="Vote">
+                    <button type="button" class="btn btn-gradient-warning btn-rounded btn-fw">Set Your Vote</button>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper">
+
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Recent Tickets</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> Nmae </th>
+                                    <th> Country </th>
+                                    <th> Email </th>
+                                    <th> Vote </th>
+                                    <th> Vote Date </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var vote in Model)
+                                {
+                                   <tr>
+                                    <td>
+                                            <img src="~/Uploads/@vote.Image" class="me-2" alt="image"> @vote.Name
+                                    </td>
+                                    <td>
+                                        @vote.Country
+                                    </td>
+                                    <td>@vote.Email</td>
+                                        <td>
+                                            @if (@vote.VoteString == "OPPO")
+                                            {
+                                                <button type="button" class="btn btn-dark btn-fw">@vote.VoteString</button>
+                                            }
+                                            @if (@vote.VoteString == "POCO")
+                                            {
+                                                <button type="button" class="btn btn-warning btn-fw">@vote.VoteString</button>
+                                            }
+                                            @if (@vote.VoteString == "Sumsung")
+                                            {
+                                                <button type="button" class="btn btn-info btn-fw">@vote.VoteString</button>
+                                            }
+                                            @if (@vote.VoteString == "REDMI")
+                                            {
+                                                <button type="button" class="btn btn-success btn-fw">@vote.VoteString</button>
+                                            }
+                                    </td>
+                                    <td> @vote.Date </td>
+                                </tr> 
+                                }
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
